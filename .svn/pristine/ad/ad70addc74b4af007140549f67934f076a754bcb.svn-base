@@ -1,0 +1,23 @@
+package com.example.palo.beijinnews;
+
+import android.app.Application;
+
+import com.example.palo.beijinnews.volley.VolleyManager;
+
+import org.xutils.x;
+
+import cn.jpush.android.api.JPushInterface;
+
+/**
+ * Created by palo on 2016/10/15.
+ */
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        x.Ext.init(this);
+        //初始Volley
+        VolleyManager.init(this);
+        JPushInterface.init(this);
+    }
+}

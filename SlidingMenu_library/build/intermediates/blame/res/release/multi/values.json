@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "G:\\AS_PROJECT\\BeijinNews\\SlidingMenu_library\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 961,
+                    "endColumn": 42,
+                    "endOffset": 999
+                },
+                "from": {
+                    "file": "G:\\AS_PROJECT\\BeijinNews\\SlidingMenu_library\\res\\values\\ids.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 42,
+                        "endOffset": 95
+                    }
+                }
+            }
+        ]
+    }
+]

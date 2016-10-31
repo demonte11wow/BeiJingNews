@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.example.palo.beijinnews.view.NoScrollViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+    <RadioGroup
+        android:id="@+id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_tab_bg"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/rb_home_selector"
+            android:gravity="center"
+            android:text="主页"
+            android:textColor="@drawable/rb_home_textcolor_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/rb_news_selector"
+            android:gravity="center"
+            android:text="新闻"
+            android:textColor="@drawable/rb_home_textcolor_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_shopping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/rb_shopping_selector"
+            android:gravity="center"
+            android:text="商城"
+            android:textColor="@drawable/rb_home_textcolor_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_shopping_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/rb_shopping_cart_selector"
+            android:gravity="center"
+            android:text="购物车"
+            android:textColor="@drawable/rb_home_textcolor_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/rb_setting_selector"
+            android:gravity="center"
+            android:text="设置"
+            android:textColor="@drawable/rb_home_textcolor_selector" />
+
+    </RadioGroup>
+
+</LinearLayout>

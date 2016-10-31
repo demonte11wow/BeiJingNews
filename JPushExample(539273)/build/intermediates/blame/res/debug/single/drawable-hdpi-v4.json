@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tiledstripes.xml",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\tiledstripes.xml"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\top_bg.9.png",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\top_bg.9.png"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\border_bg.9.png",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\border_bg.9.png"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\stripes.png",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\stripes.png"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_richpush_actionbar_back.png",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\ic_richpush_actionbar_back.png"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\richpush_btn_selector.xml",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\richpush_btn_selector.xml"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bottom_bg.9.png",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\bottom_bg.9.png"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\richpush_progressbar.xml",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\richpush_progressbar.xml"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_richpush_actionbar_divider.png",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\ic_richpush_actionbar_divider.png"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\corners_bg.xml",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\corners_bg.xml"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\jpush_notification_icon.png",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\drawable-hdpi\\jpush_notification_icon.png"
+    }
+]

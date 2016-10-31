@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:divider="@null"
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@android:color/transparent"></ListView>
+
+    <GridView
+        android:visibility="gone"
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:numColumns="2"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@android:color/transparent"></GridView>
+
+</FrameLayout>

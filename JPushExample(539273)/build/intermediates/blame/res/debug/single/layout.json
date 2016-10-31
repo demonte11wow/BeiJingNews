@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\layout\\set_push_time.xml",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\layout\\set_push_time.xml"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\layout\\jpush_webview_layout.xml",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\layout\\jpush_webview_layout.xml"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\layout\\customer_notitfication_layout.xml",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\layout\\customer_notitfication_layout.xml"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\layout\\push_set_dialog.xml",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\layout\\push_set_dialog.xml"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\layout\\jpush_popwin_layout.xml",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\layout\\jpush_popwin_layout.xml"
+    },
+    {
+        "merged": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\build\\intermediates\\res\\merged\\debug\\layout\\customer_notitfication_layout_one.xml",
+        "source": "G:\\AS_PROJECT\\BeijinNews\\JPushExample(539273)\\res\\layout\\customer_notitfication_layout_one.xml"
+    }
+]

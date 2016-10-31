@@ -1,0 +1,289 @@
+package com.example.palo.beijinnews.pager;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.palo.beijinnews.MainActivity;
+import com.example.palo.beijinnews.base.BasePager;
+import com.example.palo.beijinnews.base.MenuDetailBasePager;
+import com.example.palo.beijinnews.domain.NewsCenterPagerBean2;
+import com.example.palo.beijinnews.fragment.LeftMenuFragment;
+import com.example.palo.beijinnews.pager.detailpager.InteractDeatailPager;
+import com.example.palo.beijinnews.pager.detailpager.NewsDeatailPager;
+import com.example.palo.beijinnews.pager.detailpager.PhotosDeatailPager;
+import com.example.palo.beijinnews.pager.detailpager.TopicDeatailPager;
+import com.example.palo.beijinnews.utils.CacheUtils;
+import com.example.palo.beijinnews.utils.Constants;
+import com.example.palo.beijinnews.utils.LogUtil;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：尚硅谷-杨光福 on 2016/10/17 09:06
+ * 微信：yangguangfu520
+ * QQ号：541433511
+ * 作用：新闻页面
+ */
+public class NewsCenterPager extends BasePager {
+    /**
+     * 左侧菜单对应数据
+     */
+    private List<NewsCenterPagerBean2.NewsCenterPagerData> leftdata;
+
+    /**
+     * 左侧菜单对应的详情页面集合
+     */
+    private ArrayList<MenuDetailBasePager> detailBasePagers;
+
+    public NewsCenterPager(Context context) {
+        super(context);
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
+
+        //显示菜单按钮
+        ib_menu.setVisibility(View.VISIBLE);
+
+        LogUtil.e("新闻面数据加载了....");
+        //设置标题
+        tv_title.setText("新闻");
+        //创建子页面的视图
+        TextView textView = new TextView(context);
+        textView.setTextSize(30);
+        textView.setGravity(Gravity.CENTER);
+        textView.setTextColor(Color.RED);
+        textView.setText("新闻页面");
+
+        //子页面的视图和FrameLayout结合在一起，形成一个新的页面
+        fl_base_content.addView(textView);
+
+        //获取缓存的数据
+        String saveJson = CacheUtils.getString(context, Constants.NEWS_CENTER_URL);//
+        if (!TextUtils.isEmpty(saveJson)) {
+            processData(saveJson);
+        }
+
+        //联网请求
+        getDataFromNet();
+    }
+
+    private void getDataFromNet() {
+        RequestParams params = new RequestParams(Constants.NEWS_CENTER_URL);
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                LogUtil.e("联网成功==" + result);
+
+                //数据保存起来
+                CacheUtils.putString(context, Constants.NEWS_CENTER_URL, result);
+
+                processData(result);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                LogUtil.e("联网失败==" + ex.getMessage());
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                LogUtil.e("onCancelled==" + cex.getMessage());
+            }
+
+            @Override
+            public void onFinished() {
+                LogUtil.e("onFinished==");
+            }
+        });
+    }
+
+    /**
+     * 解析和显示数据
+     *
+     * @param json
+     */
+    private void processData(String json) {
+
+//        NewsCenterPagerBean bean = paraseJson(json);
+        NewsCenterPagerBean2 bean2 = paraseJsons2(json);
+//        NewsCenterPagerBean2 bean2 = paraseJsons3(json);
+        LogUtil.e("解析成功了bean2==" + bean2.getData().get(0).getChildren().get(1).getTitle());
+
+        //把解析好的数据传递给左侧菜单
+        leftdata = bean2.getData();
+
+        MainActivity mainActivity = (MainActivity) context;
+
+        //创建页面集合
+        detailBasePagers = new ArrayList<>();
+        detailBasePagers.add(new NewsDeatailPager(context, leftdata.get(0)));//新闻详情页面
+        detailBasePagers.add(new TopicDeatailPager(context, leftdata.get(0)));//专题详情页面
+        detailBasePagers.add(new PhotosDeatailPager(context, leftdata.get(2)));//组图详情页面
+        detailBasePagers.add(new InteractDeatailPager(context, leftdata.get(2)));//互动详情页面
+        //得到左侧菜单的实例
+        LeftMenuFragment leftMenuFragment = mainActivity.getLeftMenuFragment();
+        //设置数据
+        leftMenuFragment.setData(leftdata);
+
+
+//        swichPager(0);
+
+
+    }
+
+    private NewsCenterPagerBean2 paraseJsons3(String json) {
+        return new Gson().fromJson(json, NewsCenterPagerBean2.class);
+    }
+
+    /**
+     * 手动解析json数据
+     *
+     * @param json
+     * @return
+     */
+    private NewsCenterPagerBean2 paraseJsons2(String json) {
+        NewsCenterPagerBean2 bean2 = new NewsCenterPagerBean2();
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            int retcode = jsonObject.optInt("retcode");
+            bean2.setRetcode(retcode);
+            JSONArray jsonArrayData = jsonObject.optJSONArray("data");
+
+            if (jsonArrayData != null) {
+
+                //创建集合装数据
+                List<NewsCenterPagerBean2.NewsCenterPagerData> data = new ArrayList<>();
+                //把集合关联到Bean对象中
+                bean2.setData(data);
+
+                for (int i = 0; i < jsonArrayData.length(); i++) {
+
+                    JSONObject itemData = (JSONObject) jsonArrayData.get(i);
+                    if (itemData != null) {
+
+                        NewsCenterPagerBean2.NewsCenterPagerData newsCenterPagerData = new NewsCenterPagerBean2.NewsCenterPagerData();
+
+                        int id = itemData.optInt("id");
+                        newsCenterPagerData.setId(id);
+                        int type = itemData.optInt("type");
+                        newsCenterPagerData.setType(type);
+                        String title = itemData.optString("title");
+                        newsCenterPagerData.setTitle(title);
+                        String url = itemData.optString("url");
+                        newsCenterPagerData.setUrl(url);
+                        String url1 = itemData.optString("url1");
+                        newsCenterPagerData.setUrl1(url1);
+                        String dayurl = itemData.optString("dayurl");
+                        newsCenterPagerData.setDayurl(dayurl);
+                        String excurl = itemData.optString("excurl");
+                        newsCenterPagerData.setExcurl(excurl);
+                        String weekurl = itemData.optString("weekurl");
+                        newsCenterPagerData.setWeekurl(weekurl);
+
+
+                        JSONArray childrenjsonArray = itemData.optJSONArray("children");
+                        if (childrenjsonArray != null) {
+                            List<NewsCenterPagerBean2.NewsCenterPagerData.ChildrenData> children = new ArrayList<>();
+                            //设置children的数据
+                            newsCenterPagerData.setChildren(children);
+
+                            for (int j = 0; j < childrenjsonArray.length(); j++) {
+
+                                JSONObject chilrenItemData = (JSONObject) childrenjsonArray.get(j);
+
+                                if (chilrenItemData != null) {
+
+                                    NewsCenterPagerBean2.NewsCenterPagerData.ChildrenData childrenData = new NewsCenterPagerBean2.NewsCenterPagerData.ChildrenData();
+
+                                    //添加到集合中
+                                    children.add(childrenData);
+                                    //添加数据
+                                    childrenData.setId(chilrenItemData.optInt("id"));
+                                    childrenData.setType(chilrenItemData.optInt("type"));
+                                    childrenData.setTitle(chilrenItemData.optString("title"));
+                                    childrenData.setUrl(chilrenItemData.optString("url"));
+                                }
+
+                            }
+
+                        }
+
+                        //把数据添加到集合中
+                        data.add(newsCenterPagerData);
+                    }
+                }
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return bean2;
+    }
+
+//    /**
+//     * 解析json数据：使用第三方框架（Gson,Fastjson）和使用系统的API解析
+//     *
+//     * @param json
+//     * @return
+//     */
+//    private NewsCenterPagerBean paraseJson(String json) {
+//        return new Gson().fromJson(json, NewsCenterPagerBean.class);
+//    }
+
+    /**
+     * 根据位置切换到不同的详情页面
+     *
+     * @param position
+     */
+    public void swichPager(int position) {
+
+        if (position < detailBasePagers.size()) {
+            //1.改变标题
+            tv_title.setText(leftdata.get(position).getTitle());
+            //2.改变内容
+            MenuDetailBasePager detailBasePager = detailBasePagers.get(position);//NewsDeatailPager,TopicDeatailPager
+            //每个详情页面对应的视图
+            View rootView = detailBasePager.rootView;
+            detailBasePager.initData();//初始数据
+            //把之前的移除
+            fl_base_content.removeAllViews();
+            //添加到FrameLayout
+            fl_base_content.addView(rootView);
+
+            if (position == 2) {
+                ib_swich_list_grid.setVisibility(View.VISIBLE);
+                ib_swich_list_grid.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        PhotosDeatailPager photosDeatailPager = (PhotosDeatailPager) detailBasePagers.get(2);
+                        photosDeatailPager.swicheListAndGrid(ib_swich_list_grid);
+
+                    }
+                });
+            } else {
+                ib_swich_list_grid.setVisibility(View.GONE);
+            }
+        } else {
+            Toast.makeText(context, "抱歉女神，该功能还没有实现", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+}

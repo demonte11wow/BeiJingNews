@@ -1,0 +1,16 @@
+package com.example.palo.beijinnews;
+
+import android.app.Application;
+
+import org.xutils.x;
+
+/**
+ * Created by palo on 2016/10/15.
+ */
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        x.Ext.init(this);
+    }
+}
